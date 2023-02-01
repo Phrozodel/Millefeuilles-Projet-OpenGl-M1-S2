@@ -27,9 +27,10 @@ function webGLStart() {
 	document.getElementById('rangeGreen').addEventListener('input',changeColor);
 	document.getElementById('rangeTransparence').addEventListener('input',changeColor);
 
+	nbImg=440;
 	initGL(canvas);
 	initBuffers();
-	initTextures("langoustine/image.",500);
+	initTextures("langoustine/image.",nbImg);
 	//initTexture();
 	loadShaders('shader');
 
@@ -261,7 +262,7 @@ function drawScene() {
 	gl.clear(gl.COLOR_BUFFER_BIT);
 
 	if(shaderProgram != null) {
-
+		var distance = 0.005;
 		//gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
 
 		mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
@@ -269,6 +270,7 @@ function drawScene() {
 		mat4.translate(mvMatrix, [0.0, 0.0, -5.0]);
 		mat4.multiply(mvMatrix, objMatrix);
 
+		mat4.translate(mvMatrix, [0.0, 0.0,-distance*nbImg/2.0]);
 		setMatrixUniforms();
 
 		//gl.drawElements(gl.TRIANGLE_FAN, indexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
@@ -276,7 +278,7 @@ function drawScene() {
 		{
 			gl.bindTexture(gl.TEXTURE_2D,loadedimages[i]);
 			gl.drawArrays(gl.TRIANGLE_FAN, 0, vertexBuffer.numItems);
-			mat4.translate(mvMatrix, [0.0, 0.0, 0.005]);
+			mat4.translate(mvMatrix, [0.0, 0.0, distance]);
 			setMatrixUniforms();
 		}
 		//gl.bindTexture(gl.TEXTURE_2D,loadedimages[1]);
