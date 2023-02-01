@@ -1,0 +1,34 @@
+<html>
+
+<head>
+	<title>WebGL - Canvas test</title>
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<!------------------------------------------------------------------->
+	<script type="text/javascript" src="glMatrix.js"></script>
+	<script type="text/javascript" src="callbacks.js"></script>
+	<script type="text/javascript" src="glCourseBasis.js"></script>
+<!------------------------------------------------------------------->
+
+</head>
+
+
+<body onload="webGLStart();">
+	<canvas id="WebGL-test" style="border:none;" width="600" height="600"></canvas>
+</body>
+
+<form method="post" action="#" onchange="AfficheRangeRED()" onkeyup="AfficheRangeRED()">
+	<fieldset>
+		<legend>Background</legend>
+		<label>Red :</label>
+		<input id="rangeRed" type="range" value="255" min="0" max="255">
+		<label>Green :</label>
+		<input id="rangeGreen" type="range" value="255" min="0" max="255">
+		<label>Blue :</label>
+		<input id="rangeBlue" type="range" value="255" min="0" max="255">
+		<label>Opacity :</label>
+		<input id="rangeTransparence" type="range" step ="0.01" value="0" min="0" max="1">
+	</fieldset>
+</form>
+
+</html>
